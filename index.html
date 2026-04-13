@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Qi | PhD Research Student</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>John Qi</h1>
+  <p>PhD Candidate in Neurobiology</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="quiz.html">Quiz</a></li> 
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<main>
+
+<section id="about">
+  <h2>About</h2>
+  <img src="images/profile.png" alt="Photo of John Qi" class="profile-pic">
+
+  <p>
+   I am a PhD candidate in neurobiology with a strong commitment to independent and rigorous scientific research. 
+   My work is characterised by a detail-oriented and analytical approach, supported by strong problem-solving skills. 
+   My primary research interests include cell division, protein–protein interactions, cellular differentiation, and neurobiology, 
+   while maintaining a broader interest in the biological sciences.
+  </p>
+
+  <p>
+    In addition to my research activities, I have extensive teaching experience spanning over a decade, having taught students both domestically 
+    and internationally across a range of subjects and academic levels. I am committed to fostering effective learning through structured, interactive, 
+    and student-centred teaching approaches, with an emphasis on adapting pedagogy to meet diverse learner needs.
+  </p>
+</section>
+
+<section id="research">
+  <h2>Research & Projects</h2>
+
+  <!-- Project 1 -->
+  <article>
+    <h4>Current project: Unlocking the proteomics of Glycine receptors</h4>
+
+    <p>
+      This project explores the interaction of glycine receptors with auxiliary subunits.
+    </p>
+
+    <p class="extra-details" hidden>
+      These subunits regulate receptor function. My current work focuses on identifying interaction networks
+      and understanding how glycine receptors are controlled using proteomics and biochemical assays.
+    </p>
+
+    <button class="toggle-details" type="button" aria-expanded="false">
+      Show details
+    </button>
+  </article>
+
+  <!-- Project 2 -->
+  <article>
+    <h4>Substrate stiffness & neural crest EMT</h4>
+
+    <p>
+      This project examined how substrate stiffness affects cell migration.
+    </p>
+
+    <p class="extra-details" hidden>
+      The aim was to build a reproducible model showing how mechanical properties influence EMT and migration,
+      using controlled substrates and microscopy techniques. Prior research shown by Barriga et al. (2018) showed that underlying tissue stiffening caused cells to migrate while softening
+      lead to both arrest in cell migration as well as differentiation. This project was designed to look at producing a more sustainable and useful model for research and further testing as 
+      the previous research was conducted on the African clawed frog. By reproducing this on a human cell culture model, many confounding factors can be eliminated when further research is conducted.
+    </p>
+
+    <button class="toggle-details" type="button" aria-expanded="false">
+      Show details
+    </button>
+  </article>
+<article>
+  <h4>HOW: The Long and short of intestinal stem cells</h4>
+
+  <p>
+    This project was looked at a gene called HOW (Held out wing) and its expression in intestinal stem calls of fruit flies.
+  </p>
+
+  <p class="extra-details" hidden>
+    HOW expression in the intestinal stem cells of fruit flies was shown to impact differentiation of cells. Inhibition of HOW lead to a lower amount of intestinal stem cells
+    as well as inhibiting the amount of cells it differentiated towards. The 2 isoforms that were expressed were also shown to have varying effects with the longer isoform leading to more intestinal
+    stem cells in the gut as well as far more proliferation and differentiation. Results from this research could help answer some of the ways in which intestinal cancer is able to be spread as a similar
+    gene is expressed in humans.
+  </p>
+
+  <button class="toggle-details" type="button" aria-expanded="false">
+    Show details
+  </button>
+</article>
+
+</section>
+
+<section id="skills">
+  <h2>Skills & Expertise</h2>
+  <ul>
+    <li>Molecular / cell biology</li>
+    <li>Good Laboratory Practice (GLP)</li>
+    <li>Health & safety protocols</li>
+    <li>Human stem cells</li>
+    <li>Cell development / migration</li>
+    <li>Gel electrophoresis</li>
+    <li>Fluorescence / confocal microscopy</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>If you would like to discuss potential collaborations...</p>
+
+  <form>
+    <div>
+      <label for="name">Name</label><br>
+      <input type="text" id="name" required>
+    </div>
+
+    <div>
+      <label for="email">Email</label><br>
+      <input type="email" id="email" required>
+    </div>
+
+    <div>
+      <label for="message">Message</label><br>
+      <textarea id="message" rows="5" required></textarea>
+    </div>
+
+    <div>
+      <button type="submit">Send message</button>
+    </div>
+  </form>
+</section>
+
+
+</main>
+
+<footer>
+  <p>© 2026 John Qi</p>
+</footer>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".toggle-details");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const article = button.closest("article");
+      const details = article.querySelector(".extra-details");
+
+      const isHidden = details.hasAttribute("hidden");
+
+      if (isHidden) {
+        details.removeAttribute("hidden");
+        button.textContent = "Hide details";
+        button.setAttribute("aria-expanded", "true");
+      } else {
+        details.setAttribute("hidden", "");
+        button.textContent = "Show details";
+        button.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
