@@ -24,6 +24,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+
 <main>
 
 <section id="about">
@@ -40,73 +41,52 @@
   <p>
     In addition to my research activities, I have extensive teaching experience spanning over a decade, having taught students both domestically 
     and internationally across a range of subjects and academic levels. I am committed to fostering effective learning through structured, interactive, 
-    and student-centred teaching approaches, with an emphasis on adapting pedagogy to meet diverse learner needs.
+    and student-centred teaching approaches.
   </p>
 </section>
 
 <section id="research">
   <h2>Research & Projects</h2>
 
-  <!-- Project 1 -->
   <article>
     <h4>Current project: Unlocking the proteomics of Glycine receptors</h4>
-
-    <p>
-      This project explores the interaction of glycine receptors with auxiliary subunits.
-    </p>
+    <p>This project explores the interaction of glycine receptors with auxiliary subunits.</p>
 
     <p class="extra-details" hidden>
       These subunits regulate receptor function. My current work focuses on identifying interaction networks
       and understanding how glycine receptors are controlled using proteomics and biochemical assays.
     </p>
 
-    <button class="toggle-details" type="button" aria-expanded="false">
-      Show details
-    </button>
+    <button class="toggle-details" type="button">Show details</button>
   </article>
 
-  <!-- Project 2 -->
   <article>
     <h4>Substrate stiffness & neural crest EMT</h4>
-
-    <p>
-      This project examined how substrate stiffness affects cell migration.
-    </p>
+    <p>This project examined how substrate stiffness affects cell migration.</p>
 
     <p class="extra-details" hidden>
-      The aim was to build a reproducible model showing how mechanical properties influence EMT and migration,
-      using controlled substrates and microscopy techniques. Prior research shown by Barriga et al. (2018) showed that underlying tissue stiffening caused cells to migrate while softening
-      lead to both arrest in cell migration as well as differentiation. This project was designed to look at producing a more sustainable and useful model for research and further testing as 
-      the previous research was conducted on the African clawed frog. By reproducing this on a human cell culture model, many confounding factors can be eliminated when further research is conducted.
+      The aim was to build a reproducible model showing how mechanical properties influence EMT and migration.
     </p>
 
-    <button class="toggle-details" type="button" aria-expanded="false">
-      Show details
-    </button>
+    <button class="toggle-details" type="button">Show details</button>
   </article>
-<article>
-  <h4>HOW: The Long and short of intestinal stem cells</h4>
 
-  <p>
-    This project looked at a gene called HOW (Held out wing) and its expression in intestinal stem calls of fruit flies.
-  </p>
+  <article>
+    <h4>HOW: The Long and short of intestinal stem cells</h4>
+    <p>This project looked at a gene called HOW and its expression in intestinal stem cells.</p>
 
-  <p class="extra-details" hidden>
-    HOW expression in the intestinal stem cells of fruit flies was shown to impact differentiation of cells. Inhibition of HOW lead to a lower amount of intestinal stem cells
-    as well as inhibiting the amount of cells it differentiated towards. The 2 isoforms that were expressed were also shown to have varying effects with the longer isoform leading to more intestinal
-    stem cells in the gut as well as far more proliferation and differentiation. Results from this research could help answer some of the ways in which intestinal cancer is able to be spread as a similar
-    gene is expressed in humans.
-  </p>
+    <p class="extra-details" hidden>
+      HOW expression was shown to impact differentiation and proliferation of stem cells.
+    </p>
 
-  <button class="toggle-details" type="button" aria-expanded="false">
-    Show details
-  </button>
-</article>
+    <button class="toggle-details" type="button">Show details</button>
+  </article>
 
 </section>
 
 <section id="skills">
   <h2>Skills & Expertise</h2>
+
   <ul>
     <li>Molecular / cell biology</li>
     <li>Good Laboratory Practice (GLP)</li>
@@ -116,6 +96,7 @@
     <li>Gel electrophoresis</li>
     <li>Fluorescence / confocal microscopy</li>
   </ul>
+
   <ul class="extra-skills" hidden>
     <li>Regulatory / SOP compliance</li>
     <li>Drosophila melanogaster stem cells</li>
@@ -139,37 +120,40 @@
     <li>Statistical analysis / data analytics</li>
   </ul>
 
-  <button class="toggle-skills" type="button" aria-expanded="false">
-    Show more
-  </button>
+  <button class="toggle-skills" type="button">Show more</button>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>If you would like to discuss potential collaborations...</p>
+  <p>If you would like to discuss potential collaborations, feel free to reach out.</p>
 
-  <form>
+  <!-- ✅ FORM SPREE INTEGRATION -->
+  <form action="https://formspree.io/f/mkokodkl" method="POST">
+
     <div>
-      <label for="name">Name</label><br>
-      <input type="text" id="name" required>
+      <label>Name</label><br>
+      <input type="text" name="name" required>
     </div>
 
     <div>
-      <label for="email">Email</label><br>
-      <input type="email" id="email" required>
+      <label>Email</label><br>
+      <input type="email" name="email" required>
     </div>
 
     <div>
-      <label for="message">Message</label><br>
-      <textarea id="message" rows="5" required></textarea>
+      <label>Message</label><br>
+      <textarea name="message" rows="5" required></textarea>
     </div>
+
+    <!-- Optional extras -->
+    <input type="hidden" name="_subject" value="New website contact submission">
 
     <div>
       <button type="submit">Send message</button>
     </div>
+
   </form>
 </section>
-
 
 </main>
 
@@ -181,51 +165,37 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
-  // PROJECT TOGGLES
-  // =========================
-  const buttons = document.querySelectorAll(".toggle-details");
-
-  buttons.forEach(button => {
+  // Project toggle
+  document.querySelectorAll(".toggle-details").forEach(button => {
     button.addEventListener("click", () => {
-      const article = button.closest("article");
-      const details = article.querySelector(".extra-details");
+      const details = button.closest("article").querySelector(".extra-details");
+      const hidden = details.hasAttribute("hidden");
 
-      const isHidden = details.hasAttribute("hidden");
-
-      if (isHidden) {
+      if (hidden) {
         details.removeAttribute("hidden");
         button.textContent = "Hide details";
-        button.setAttribute("aria-expanded", "true");
       } else {
         details.setAttribute("hidden", "");
         button.textContent = "Show details";
-        button.setAttribute("aria-expanded", "false");
       }
     });
   });
 
-  // =========================
-  // SKILLS TOGGLE (FIXED)
-  // =========================
+  // Skills toggle
   const skillsButton = document.querySelector(".toggle-skills");
   const extraSkills = document.querySelector(".extra-skills");
 
-  if (skillsButton && extraSkills) {
-    skillsButton.addEventListener("click", () => {
-      const isHidden = extraSkills.hasAttribute("hidden");
+  skillsButton.addEventListener("click", () => {
+    const hidden = extraSkills.hasAttribute("hidden");
 
-      if (isHidden) {
-        extraSkills.removeAttribute("hidden");
-        skillsButton.textContent = "Show less";
-        skillsButton.setAttribute("aria-expanded", "true");
-      } else {
-        extraSkills.setAttribute("hidden", "");
-        skillsButton.textContent = "Show more";
-        skillsButton.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
+    if (hidden) {
+      extraSkills.removeAttribute("hidden");
+      skillsButton.textContent = "Show less";
+    } else {
+      extraSkills.setAttribute("hidden", "");
+      skillsButton.textContent = "Show more";
+    }
+  });
 
 });
 </script>
