@@ -88,7 +88,7 @@
   <h4>HOW: The Long and short of intestinal stem cells</h4>
 
   <p>
-    This project was looked at a gene called HOW (Held out wing) and its expression in intestinal stem calls of fruit flies.
+    This project looked at a gene called HOW (Held out wing) and its expression in intestinal stem calls of fruit flies.
   </p>
 
   <p class="extra-details" hidden>
@@ -116,6 +116,32 @@
     <li>Gel electrophoresis</li>
     <li>Fluorescence / confocal microscopy</li>
   </ul>
+  <ul class="extra-skills" hidden>
+    <li>Regulatory / SOP compliance</li>
+    <li>Drosophila melanogaster stem cells</li>
+    <li>Xenopus laevis stem cells</li>
+    <li>Chicken embryos</li>
+    <li>Cell culture treatment techniques</li>
+    <li>Cell fractionation</li>
+    <li>Immunohistochemistry</li>
+    <li>Immunostaining applications</li>
+    <li>Molecular dynamics</li>
+    <li>Molecular biology protocols</li>
+    <li>RT-PCR / qPCR</li>
+    <li>In situ hybridisation (ISH)</li>
+    <li>Genetics: genes & genomes</li>
+    <li>CRISPR-based genetic editing</li>
+    <li>DNA isolation</li>
+    <li>Imaging techniques</li>
+    <li>Science ethics & responsibility</li>
+    <li>Research design & practice</li>
+    <li>Laboratory records maintenance</li>
+    <li>Statistical analysis / data analytics</li>
+  </ul>
+
+  <button class="toggle-skills" type="button" aria-expanded="false">
+    Show more
+  </button>
 </section>
 
 <section id="contact">
@@ -152,9 +178,12 @@
 </footer>
 
 <!-- JavaScript -->
-<script src="script.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
+  // =========================
+  // PROJECT TOGGLES
+  // =========================
   const buttons = document.querySelectorAll(".toggle-details");
 
   buttons.forEach(button => {
@@ -175,6 +204,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // =========================
+  // SKILLS TOGGLE (FIXED)
+  // =========================
+  const skillsButton = document.querySelector(".toggle-skills");
+  const extraSkills = document.querySelector(".extra-skills");
+
+  if (skillsButton && extraSkills) {
+    skillsButton.addEventListener("click", () => {
+      const isHidden = extraSkills.hasAttribute("hidden");
+
+      if (isHidden) {
+        extraSkills.removeAttribute("hidden");
+        skillsButton.textContent = "Show less";
+        skillsButton.setAttribute("aria-expanded", "true");
+      } else {
+        extraSkills.setAttribute("hidden", "");
+        skillsButton.textContent = "Show more";
+        skillsButton.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
 });
 </script>
 
