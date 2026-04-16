@@ -76,62 +76,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buildQuiz();
 
-  // =========================
-  // SUBMIT
-  // =========================
   submitButton.addEventListener("click", () => {
     let score = 0;
 
     quizQuestions.forEach((q, index) => {
-      const answers = document.querySelectorAll(`input[name="question${index}"]`);
-      let selectedAnswer = null;
+      const inputs = document.querySelectorAll(`input[name="question${index}"]`);
+      let selected = null;
 
-      answers.forEach(input => {
+      inputs.forEach(input => {
         const label = input.parentElement;
-
-        // reset colours first
         label.style.color = "black";
 
-        if (input.checked) {
-          selectedAnswer = input.value;
-        }
+        if (input.checked) selected = input.value;
 
-        // mark correct answer
         if (input.value === q.correctAnswer) {
           label.style.color = "green";
         }
       });
 
-      // mark wrong answer
-      if (selectedAnswer && selectedAnswer !== q.correctAnswer) {
+      if (selected && selected !== q.correctAnswer) {
         const wrong = document.querySelector(
-          `input[name="question${index}"][value="${selectedAnswer}"]`
+          `input[name="question${index}"][value="${selected}"]`
         );
         wrong.parentElement.style.color = "red";
       }
 
-      if (selectedAnswer === q.correctAnswer) {
-        score++;
-      }
+      if (selected === q.correctAnswer) score++;
     });
 
-    // feedback
     let message = "";
 
-    if (score <= 1) {
-      message = "Try again.";
-    } else if (score === 3) {
-      message = "Good job!";
-    } else if (score === 4) {
-      message = "Well done, all correct!";
-    }
+    if (score <= 1) message = "Try again.";
+    else if (score === 3) message = "Good job!";
+    else if (score === 4) message = "Well done, all correct!";
 
     resultContainer.textContent = `You got ${score} out of ${quizQuestions.length}. ${message}`;
   });
 
-  // =========================
-  // RESET
-  // =========================
   resetButton.addEventListener("click", () => {
     buildQuiz();
     resultContainer.textContent = "";
